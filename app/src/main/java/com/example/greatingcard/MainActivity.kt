@@ -3,6 +3,7 @@ package com.example.greatingcard
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -13,7 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.greatingcard.ui.theme.GreatingCardTheme
+import androidx.compose.foundation.layout.Column
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.foundation.layout.Arrangement
 
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +32,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Faiz")//set layout from jetpack @compose
+                    GreetingText(
+                        message = "Happy Birthday Sam!",
+                        from = "From EmmaAAA",
+                        modifier = Modifier.padding(8.dp)
+                    )
                 }
             }
         }
@@ -34,21 +44,31 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Surface(color=Color.Cyan) { //surround with widget ctlr+alt+t
+fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
+    Column(
+        verticalArrangement = Arrangement.Center,
+        modifier = modifier
+    ) {
         Text(
-            text = "Hi, my name is $name!",
-            modifier = modifier.padding(24.dp)
-
+            text = message,
+            fontSize = 100.sp,
+            lineHeight = 116.sp,
+            textAlign = TextAlign.Center
         )
-
+        Text(
+            text = from,
+            fontSize = 36.sp,
+            modifier = Modifier
+                .padding(16.dp)
+                .align(alignment = Alignment.End)
+        )
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, name = "BirthdayCardPreview")
 @Composable
-fun GreetingPreview() {
+fun GreetingPreview() { //irthdayCardPreview()
     GreatingCardTheme {
-        Greeting("Faiz")
+        GreetingText(message = "Happy Birthday Sam!", from = "From aaa ")
     }
 }
