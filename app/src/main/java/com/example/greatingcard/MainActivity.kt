@@ -34,70 +34,81 @@ class MainActivity : ComponentActivity() {
             GreatingCardTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                        modifier = Modifier.fillMaxSize(),
+                        color = MaterialTheme.colorScheme.background
                 ) {
-                    GreetingImage(
-                        message = getString(R.string.happy_birthday_text),
-                        from = getString(R.string.signature_text),
+                    ArticleImage(
+                            message1 = stringResource(R.string.message1),
+                            message2 = stringResource(R.string.message2),
+                            message3 = stringResource(R.string.message3),
 
-                        )
+                            )
                 }
             }
         }
     }
 }
 
-@Composable
-fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
-    Column(
-        verticalArrangement = Arrangement.Center,
-        modifier = modifier
-    ) {
-        Text(
-            text = message,
-            fontSize = 100.sp,
-            lineHeight = 116.sp,
-            textAlign = TextAlign.Center
-        )
-        Text(
-            text = from,
-            fontSize = 36.sp,
-            modifier = Modifier
-                .padding(16.dp)
-                .align(alignment = Alignment.CenterHorizontally)
-        )
-    }
-}
 
 @Composable
-fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
-    val image = painterResource(R.drawable.androidparty)
-    Box(modifier) {
+fun ArticleText(message1: String, message2: String, message3: String, modifier: Modifier =
+        Modifier) {
+    val image = painterResource(R.drawable.bg_compose_background)
+    Column(
+            modifier = modifier
+    ) {
         Image(
-            painter = image,
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            alpha = 0.5F
+                painter =  image,
+                contentDescription = null,
         )
-        GreetingText(
-            message = message,
-            from = from,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(8.dp)
+        Text(
+                text = message1,
+                fontSize = 24.sp,
+                modifier = Modifier.padding(16.dp)
+        )
+        Text(
+                text = message2,
+                modifier = Modifier.padding(16.dp, 0.dp, 16.dp, 0.dp),
+                textAlign = TextAlign.Justify
+        )
+        Text(
+                text = message3,
+                modifier = Modifier.padding(16.dp),
+                textAlign = TextAlign.Justify
         )
     }
+
+}
+
+
+@Composable
+fun ArticleImage(message1: String, message2: String, message3: String, modifier: Modifier =
+        Modifier) {
+
+    Box(modifier) {
+
+        ArticleText(
+                message1 = message1,
+                message2 = message2,
+                message3 = message3,
+                modifier = Modifier
+                        .fillMaxSize()
+
+        )
+    }
+
 }
 
 @Preview(showBackground = true, name = "BirthdayCardPreview")
 @Composable
-fun GreetingPreview() { //irthdayCardPreview()
+fun ArticlePreview() {
     GreatingCardTheme {
 //        GreetingText(message = "Happy Birthday Sam!", from = "From aaa ")
-        GreetingImage(
-            message = stringResource(R.string.happy_birthday_text),
-            from = stringResource(R.string.signature_text)
+        ArticleImage(
+                message1 = stringResource(R.string.message1),
+                message2 = stringResource(R.string.message2),
+                message3 = stringResource(R.string.message3),
         )
     }
 }
+
