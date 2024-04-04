@@ -90,6 +90,20 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) 
     }
 }
 
+@Composable
+fun ArticleImage() {
+    val image = painterResource(R.drawable.bg_compose_background)
+    Box {
+        Image(
+            painter = image,
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            alpha = 0.5F
+        )
+    }
+
+}
+
 @Preview(showBackground = true, name = "BirthdayCardPreview")
 @Composable
 fun GreetingPreview() { //irthdayCardPreview()
