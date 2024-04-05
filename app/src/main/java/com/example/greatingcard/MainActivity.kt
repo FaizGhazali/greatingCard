@@ -51,17 +51,19 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ComposeQuadApp() {
-    Column() { //max item width
+    Column(Modifier.fillMaxWidth()) { //max item width
         Row(Modifier.weight(1f)) {
 
             //2 item
             ComposableInfoCard(title = "Text composable",
                     description = "Displays text and follows the recommended Material Design guidelines.",
-                    bgColor = Color(0xFFEADDFF)
+                    bgColor = Color(0xFFEADDFF),
+                    modifier = Modifier.weight(1f)
             )
             ComposableInfoCard(title = "Image composable",
                     description = "Creates a composable that lays out and draws a given Painter class object.",
-                    bgColor = Color(0xFFD0BCFF)
+                    bgColor = Color(0xFFD0BCFF),
+                    modifier = Modifier.weight(1f)
             )
             
 
@@ -70,28 +72,18 @@ fun ComposeQuadApp() {
             //2item
             ComposableInfoCard(title = "Row composable",
                     description = "A layout composable that places its children in a horizontal sequence.",
-                    bgColor = Color(0xFFB69DF8)
+                    bgColor = Color(0xFFB69DF8),
+                    modifier = Modifier.weight(1f)
             )
             ComposableInfoCard(title = "Column composable",
                     description = "A layout composable that places its children in a vertical sequence.",
-                    bgColor = Color(0xFFF6EDFF)
+                    bgColor = Color(0xFFF6EDFF),
+                    modifier = Modifier.weight(1f)
             )
         }
-        Row(Modifier.weight(1f)) {
-            //2item
-            ComposableInfoCard(title = "Row composable",
-                    description = "A layout composable that places its children in a horizontal sequence.",
-                    bgColor = Color(0xFFB69DF8)
-            )
-            ComposableInfoCard(title = "Column composable",
-                    description = "A layout composable that places its children in a vertical sequence.",
-                    bgColor = Color(0xFFF6EDFF)
-            )
-        }
-    }
-    Column {
 
     }
+
 
 }
 
@@ -105,8 +97,8 @@ private fun ComposableInfoCard(
     Column(
             modifier = modifier
                     .fillMaxSize()
-                    .background(bgColor)
-                    .padding(16.dp),
+                    .background(bgColor),
+
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -117,6 +109,7 @@ private fun ComposableInfoCard(
         )
         Text(
                 text = description,
+                modifier = Modifier.padding(start = 16.dp,end = 16.dp),
                 textAlign = TextAlign.Justify
         )
     }
