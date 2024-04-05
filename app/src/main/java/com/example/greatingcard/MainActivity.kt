@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -22,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -38,11 +40,8 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         color = MaterialTheme.colorScheme.background
                 ) {
-                    TaskComplete(
-                            messageT1 = stringResource(R.string.messageT1),
-                            messageT2 = stringResource(R.string.messageT2)
-
-                    )
+                    //Preview
+                    ComposeQuadApp()
                 }
             }
         }
@@ -50,50 +49,80 @@ class MainActivity : ComponentActivity() {
 }
 
 
+@Composable
+fun ComposeQuadApp() {
+    Column(Modifier.fillMaxWidth()) { //max item width
+        Row(Modifier.weight(1f)) {
+
+            //2 item
+            ComposableInfoCard(title = "Text composable",
+                    description = "Displays text and follows the recommended Material Design guidelines.",
+                    bgColor = Color(0xFFEADDFF),
+                    modifier = Modifier.weight(1f)
+            )
+            ComposableInfoCard(title = "Image composable",
+                    description = "Creates a composable that lays out and draws a given Painter class object.",
+                    bgColor = Color(0xFFD0BCFF),
+                    modifier = Modifier.weight(1f)
+            )
+            
+
+        }
+        Row(Modifier.weight(1f)) {
+            //2item
+            ComposableInfoCard(title = "Row composable",
+                    description = "A layout composable that places its children in a horizontal sequence.",
+                    bgColor = Color(0xFFB69DF8),
+                    modifier = Modifier.weight(1f)
+            )
+            ComposableInfoCard(title = "Column composable",
+                    description = "A layout composable that places its children in a vertical sequence.",
+                    bgColor = Color(0xFFF6EDFF),
+                    modifier = Modifier.weight(1f)
+            )
+        }
+
+    }
+
+
+}
 
 @Composable
-fun TaskManager(messageT1: String, messageT2: String, modifier: Modifier = Modifier) {
-    val image = painterResource(R.drawable.ic_task_completed)
-
+private fun ComposableInfoCard(
+        title: String,
+        description: String,
+        bgColor: Color,
+        modifier: Modifier = Modifier,
+) {
     Column(
-            modifier = modifier,
+            modifier = modifier
+                    .fillMaxSize()
+                    .background(bgColor),
+
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally) {
-        Image(
-                painter = image,
-                contentDescription = null,
+            horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+                text = title,
+                modifier = Modifier.padding(bottom = 16.dp),
+                fontWeight = FontWeight.Bold
         )
         Text(
-                text = messageT1,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(0.dp, 24.dp, 0.dp, 8.dp),
-        )
-        Text(
-                text = messageT2,
-                fontSize = 16.sp,
+                text = description,
+                modifier = Modifier.padding(start = 16.dp,end = 16.dp),
+                textAlign = TextAlign.Justify
         )
     }
+
 }
 
 
-
+@Preview(showBackground = true,)
 @Composable
-fun TaskComplete(messageT1: String, messageT2: String, modifier: Modifier = Modifier) {
-    Box(modifier) {
-        TaskManager(messageT1 = messageT1, messageT2 = messageT2, modifier = Modifier.fillMaxSize())
+fun QuadrantPreview() {
+    GreatingCardTheme {
+        ComposeQuadApp()
     }
 }
-
-@Preview(showBackground = true, name = "TaskComplete Preview")
-@Composable
-fun TaskCompletePreview() {
-    GreatingCardTheme() {
-        TaskComplete(
-                messageT1 = stringResource(R.string.messageT1),
-                messageT2 = stringResource(R.string.messageT2)
-        )
-    }
-}
-
 
 
