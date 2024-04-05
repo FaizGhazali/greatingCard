@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 
 
 class MainActivity : ComponentActivity() {
@@ -37,12 +38,11 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         color = MaterialTheme.colorScheme.background
                 ) {
-                    ArticleImage(
-                            message1 = stringResource(R.string.message1),
-                            message2 = stringResource(R.string.message2),
-                            message3 = stringResource(R.string.message3),
+                    TaskComplete(
+                            messageT1 = stringResource(R.string.messageT1),
+                            messageT2 = stringResource(R.string.messageT2)
 
-                            )
+                    )
                 }
             }
         }
@@ -50,65 +50,50 @@ class MainActivity : ComponentActivity() {
 }
 
 
+
 @Composable
-fun ArticleText(message1: String, message2: String, message3: String, modifier: Modifier =
-        Modifier) {
-    val image = painterResource(R.drawable.bg_compose_background)
+fun TaskManager(messageT1: String, messageT2: String, modifier: Modifier = Modifier) {
+    val image = painterResource(R.drawable.ic_task_completed)
+
     Column(
-            modifier = modifier
-    ) {
+            modifier = modifier,
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally) {
         Image(
-                painter =  image,
+                painter = image,
                 contentDescription = null,
         )
         Text(
-                text = message1,
-                fontSize = 24.sp,
-                modifier = Modifier.padding(16.dp)
+                text = messageT1,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(0.dp, 24.dp, 0.dp, 8.dp),
         )
         Text(
-                text = message2,
-                modifier = Modifier.padding(16.dp, 0.dp, 16.dp, 0.dp),
-                textAlign = TextAlign.Justify
-        )
-        Text(
-                text = message3,
-                modifier = Modifier.padding(16.dp),
-                textAlign = TextAlign.Justify
+                text = messageT2,
+                fontSize = 16.sp,
         )
     }
-
 }
 
 
-@Composable
-fun ArticleImage(message1: String, message2: String, message3: String, modifier: Modifier =
-        Modifier) {
 
+@Composable
+fun TaskComplete(messageT1: String, messageT2: String, modifier: Modifier = Modifier) {
     Box(modifier) {
-
-        ArticleText(
-                message1 = message1,
-                message2 = message2,
-                message3 = message3,
-                modifier = Modifier
-                        .fillMaxSize()
-
-        )
+        TaskManager(messageT1 = messageT1, messageT2 = messageT2, modifier = Modifier.fillMaxSize())
     }
-
 }
 
-@Preview(showBackground = true, name = "BirthdayCardPreview")
+@Preview(showBackground = true, name = "TaskComplete Preview")
 @Composable
-fun ArticlePreview() {
-    GreatingCardTheme {
-//        GreetingText(message = "Happy Birthday Sam!", from = "From aaa ")
-        ArticleImage(
-                message1 = stringResource(R.string.message1),
-                message2 = stringResource(R.string.message2),
-                message3 = stringResource(R.string.message3),
+fun TaskCompletePreview() {
+    GreatingCardTheme() {
+        TaskComplete(
+                messageT1 = stringResource(R.string.messageT1),
+                messageT2 = stringResource(R.string.messageT2)
         )
     }
 }
+
+
 
