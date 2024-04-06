@@ -25,6 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -119,28 +120,63 @@ private fun ComposableProfile(
     modifier:
     Modifier = Modifier
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxSize(),
-
-
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
     ) {
-        Row {
-            Image(painter = profilePicture, contentDescription = null) // how to do this
-        }
-        Row {
-            Text(
-                text = name,
+        Column (modifier = Modifier.align(Alignment.Center),verticalArrangement = Arrangement.Center){
+            Box(
+                modifier = Modifier
+                    .size(100.dp)
 
-                )
-        }
-        Row {
-            Text(
-                text = title,
+            ) {
+                Row {
+                    Image(painter = profilePicture, contentDescription = null) // how to do this
+                }
 
-                )
+            }
+            Box {
+                Row {
+                    Text(
+                        text = name,
+
+                        )
+                }
+            }
+            Row {
+                Text(
+                    text = title,
+
+                    )
+            }
+        }
+        Column (modifier = Modifier.align(Alignment.BottomCenter),verticalArrangement = Arrangement
+            .Center){
+            Box(
+                modifier = Modifier
+                    .size(100.dp)
+
+            ) {
+                Row {
+                    Image(painter = profilePicture, contentDescription = null) // how to do this
+                }
+
+            }
+            Box {
+                Row {
+                    Text(
+                        text = name,
+
+                        )
+                }
+            }
+            Row {
+                Text(
+                    text = title,
+
+                    )
+            }
         }
     }
     Column(
