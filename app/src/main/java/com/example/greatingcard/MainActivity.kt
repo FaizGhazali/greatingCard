@@ -35,6 +35,9 @@ import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Menu
+import androidx.compose.material3.Icon
 
 
 class MainActivity : ComponentActivity() {
@@ -100,124 +103,148 @@ fun ComposeQuadApp() {
 
 @Composable
 fun ComposeBusinessCardApp() {
-    Box(
-        Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            Modifier
-                .fillMaxWidth()
-                .padding(20.dp)
-                .border(2.dp, Color.Red),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+
+
+        Box(
+
+            contentAlignment = Alignment.Center,
 
         ) {
+            Image(
+                painter = painterResource(R.drawable.androidparty),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
             Column(
                 Modifier
                     .fillMaxWidth()
-                    .padding(start = 4.dp, end = 4.dp, top = 4.dp)
-                    .border(2.dp, Color.Blue),
+                    .padding(20.dp)
+                    .border(2.dp, Color.Red),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(text = "Profile Picture")
-            }
-            Column(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 4.dp, end = 4.dp, top = 2.dp)
-                    .border(2.dp, Color.Blue),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(text = "Full Name")
-            }
-            Column(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 4.dp, end = 4.dp, top = 2.dp, bottom = 4.dp)
-                    .border(2.dp, Color.Blue),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(text = "Full Name")
-            }
-        }
-    }
-    Box(
-        Modifier.fillMaxSize(),
-        contentAlignment = Alignment.BottomCenter
 
-    ) {
-        Column(
-            Modifier
-                .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp, top = 0.dp, bottom = 40.dp)
-                .border(2.dp, Color.Red),
-            verticalArrangement = Arrangement.Center, //left justified
-            horizontalAlignment = Alignment.CenterHorizontally
-
-        ) {
-            Column(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 4.dp, end = 4.dp, top = 4.dp)
-                    .border(2.dp, Color.Blue),
-
-                horizontalAlignment = Alignment.Start
             ) {
-                Row(
-                    Modifier.padding
-                        (start = 50.dp, top = 4.dp, bottom = 4.dp)
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 4.dp, end = 4.dp, top = 4.dp)
+                        .border(2.dp, Color.Blue),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(text = "icon", modifier = Modifier.border(2.dp, Color.Magenta))
-                    Spacer(modifier = Modifier.width(10.dp))
-                    Text(text = "+60-132022352", modifier = Modifier.border(2.dp, Color.Magenta))
-                    //Space 10dp
-                }
-            }
-            Column(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 4.dp, end = 4.dp, top = 2.dp)
-                    .border(2.dp, Color.Blue),
-
-                horizontalAlignment = Alignment.Start
-            ) {
-                Row(
-                    Modifier.padding
-                        (start = 50.dp, top = 4.dp, bottom = 4.dp)
-                ) {
-                    Text(text = "icon", modifier = Modifier.border(2.dp, Color.Magenta))
-                    Spacer(modifier = Modifier.width(10.dp))
-                    Text(text = "@faizghazra", modifier = Modifier.border(2.dp, Color.Magenta))
-                }
-            }
-            Column(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 4.dp, end = 4.dp, top = 2.dp, bottom = 4.dp)
-                    .border(2.dp, Color.Blue),
-
-
-                horizontalAlignment = Alignment.Start
-            ) {
-                Row(
-                    Modifier.padding
-                        (start = 50.dp, top = 4.dp, bottom = 4.dp)
-                ) {
-                    Text(text = "icon", modifier = Modifier.border(2.dp, Color.Magenta))
-                    Spacer(modifier = Modifier.width(10.dp))
-                    Text(
-                        text = "ahmadfaiz21@outlook.com",
-                        modifier = Modifier.border(2.dp, Color.Magenta)
+                    Image(
+                        painter = painterResource(R.drawable.ppicture),
+                        contentDescription = null,
+                        modifier = Modifier.size(62.dp)
                     )
                 }
-
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 4.dp, end = 4.dp, top = 2.dp)
+                        .border(2.dp, Color.Blue),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(text = "Ahmad Faiz bin Ghazali")
+                }
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 4.dp, end = 4.dp, top = 2.dp, bottom = 4.dp)
+                        .border(2.dp, Color.Blue),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(text = "Programmer")
+                }
             }
         }
-    }
+        Box(
+            Modifier.fillMaxSize(),
+            contentAlignment = Alignment.BottomCenter
+
+        ) {
+
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(start = 20.dp, end = 20.dp, top = 0.dp, bottom = 40.dp)
+                    .border(2.dp, Color.Red),
+                verticalArrangement = Arrangement.Center, //left justified
+                horizontalAlignment = Alignment.CenterHorizontally
+
+            ) {
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 4.dp, end = 4.dp, top = 4.dp)
+                        .border(2.dp, Color.Blue),
+
+                    horizontalAlignment = Alignment.Start
+                ) {
+                    Row(
+                        Modifier.padding
+                            (start = 50.dp, top = 4.dp, bottom = 4.dp)
+                    ) {
+                        Icon(
+                            painter = painterResource(R.drawable.social_media),
+                            contentDescription = null
+                        )
+                        Spacer(modifier = Modifier.width(10.dp))
+                        Text(
+                            text = "+60-132022352",
+                            modifier = Modifier.border(2.dp, Color.Magenta)
+                        )
+                        //Space 10dp
+                    }
+                }
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 4.dp, end = 4.dp, top = 2.dp)
+                        .border(2.dp, Color.Blue),
+
+                    horizontalAlignment = Alignment.Start
+                ) {
+                    Row(
+                        Modifier.padding
+                            (start = 50.dp, top = 4.dp, bottom = 4.dp)
+                    ) {
+                        Icon(
+                            painter = painterResource(R.drawable.contact),
+                            contentDescription = null
+                        )
+                        Spacer(modifier = Modifier.width(10.dp))
+                        Text(text = "@faizghazra", modifier = Modifier.border(2.dp, Color.Magenta))
+                    }
+                }
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 4.dp, end = 4.dp, top = 2.dp, bottom = 4.dp)
+                        .border(2.dp, Color.Blue),
+
+
+                    horizontalAlignment = Alignment.Start
+                ) {
+                    Row(
+                        Modifier.padding
+                            (start = 50.dp, top = 4.dp, bottom = 4.dp)
+                    ) {
+                        Icon(painter = painterResource(R.drawable.email), contentDescription = null)
+                        Spacer(modifier = Modifier.width(10.dp))
+                        Text(
+                            text = "ahmadfaiz21@outlook.com",
+                            modifier = Modifier.border(2.dp, Color.Magenta)
+                        )
+                    }
+
+                }
+            }
+        }
+
 }
 
 @Composable
