@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -24,10 +25,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -96,15 +100,122 @@ fun ComposeQuadApp() {
 
 @Composable
 fun ComposeBusinessCardApp() {
-    Column(Modifier.fillMaxWidth()) {
-        Row() {
-            ComposableProfile(
-                profilePicture = painterResource(R.drawable.ppicture),
-                name = "Faiz Ghazali", title = "Software Developer",
-                phoneNumber = "+601-2022352",
-                socialMedia = "faizGhazra21",
-                email = "kisame1990@gmail.com"
-            )
+    Box(
+        Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .padding(20.dp)
+                .border(2.dp, Color.Red),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+
+        ) {
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(start = 4.dp, end = 4.dp, top = 4.dp)
+                    .border(2.dp, Color.Blue),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(text = "Profile Picture")
+            }
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(start = 4.dp, end = 4.dp, top = 2.dp)
+                    .border(2.dp, Color.Blue),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(text = "Full Name")
+            }
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(start = 4.dp, end = 4.dp, top = 2.dp, bottom = 4.dp)
+                    .border(2.dp, Color.Blue),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(text = "Full Name")
+            }
+        }
+    }
+    Box(
+        Modifier.fillMaxSize(),
+        contentAlignment = Alignment.BottomCenter
+
+    ) {
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .padding(start = 20.dp, end = 20.dp, top = 0.dp, bottom = 40.dp)
+                .border(2.dp, Color.Red),
+            verticalArrangement = Arrangement.Center, //left justified
+            horizontalAlignment = Alignment.CenterHorizontally
+
+        ) {
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(start = 4.dp, end = 4.dp, top = 4.dp)
+                    .border(2.dp, Color.Blue),
+
+                horizontalAlignment = Alignment.Start
+            ) {
+                Row(
+                    Modifier.padding
+                        (start = 50.dp, top = 4.dp, bottom = 4.dp)
+                ) {
+                    Text(text = "icon", modifier = Modifier.border(2.dp, Color.Magenta))
+                    Spacer(modifier = Modifier.width(10.dp))
+                    Text(text = "+60-132022352", modifier = Modifier.border(2.dp, Color.Magenta))
+                    //Space 10dp
+                }
+            }
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(start = 4.dp, end = 4.dp, top = 2.dp)
+                    .border(2.dp, Color.Blue),
+
+                horizontalAlignment = Alignment.Start
+            ) {
+                Row(
+                    Modifier.padding
+                        (start = 50.dp, top = 4.dp, bottom = 4.dp)
+                ) {
+                    Text(text = "icon", modifier = Modifier.border(2.dp, Color.Magenta))
+                    Spacer(modifier = Modifier.width(10.dp))
+                    Text(text = "@faizghazra", modifier = Modifier.border(2.dp, Color.Magenta))
+                }
+            }
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(start = 4.dp, end = 4.dp, top = 2.dp, bottom = 4.dp)
+                    .border(2.dp, Color.Blue),
+
+
+                horizontalAlignment = Alignment.Start
+            ) {
+                Row(
+                    Modifier.padding
+                        (start = 50.dp, top = 4.dp, bottom = 4.dp)
+                ) {
+                    Text(text = "icon", modifier = Modifier.border(2.dp, Color.Magenta))
+                    Spacer(modifier = Modifier.width(10.dp))
+                    Text(
+                        text = "ahmadfaiz21@outlook.com",
+                        modifier = Modifier.border(2.dp, Color.Magenta)
+                    )
+                }
+
+            }
         }
     }
 }
@@ -125,7 +236,10 @@ private fun ComposableProfile(
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        Column (modifier = Modifier.align(Alignment.Center),verticalArrangement = Arrangement.Center){
+        Column(
+            modifier = Modifier.align(Alignment.Center),
+            verticalArrangement = Arrangement.Center
+        ) {
             Box(
                 modifier = Modifier
                     .size(100.dp)
@@ -151,53 +265,29 @@ private fun ComposableProfile(
                     )
             }
         }
-        Column (modifier = Modifier.align(Alignment.BottomCenter),verticalArrangement = Arrangement
-            .Center){
-            Box(
-                modifier = Modifier
-                    .size(100.dp)
+        Column(
+            modifier = Modifier.align(Alignment.BottomCenter),
+
 
             ) {
-                Row {
-                    Image(painter = profilePicture, contentDescription = null) // how to do this
-                }
+            Text(
+                text = phoneNumber, textAlign = TextAlign.Center
 
-            }
-            Box {
-                Row {
-                    Text(
-                        text = name,
 
-                        )
-                }
-            }
-            Row {
-                Text(
-                    text = title,
+            )
+            Text(
+                text = socialMedia,
+                textAlign = TextAlign.Center
 
-                    )
-            }
+            )
+            Text(
+                text = email,
+
+                )
         }
+
     }
-    Column(
-        modifier = modifier.fillMaxWidth(),
 
-        verticalArrangement = Arrangement.Bottom,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = phoneNumber,
-
-            )
-        Text(
-            text = socialMedia,
-
-            )
-        Text(
-            text = email,
-
-            )
-    }
 
 }
 
