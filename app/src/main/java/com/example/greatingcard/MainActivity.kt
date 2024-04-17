@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -52,44 +53,47 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             GreatingCardTheme {
-                DiceRollerApp()
+                LemonJuiceApp()
             }
         }
     }
 }
-@Composable
-fun DiceWithBUttonAndImage(modifier: Modifier = Modifier){
 
-    var result by remember { mutableStateOf(1)}
-    val imageResource = when (result){
-        1 -> R.drawable.dice_1
-        2 -> R.drawable.dice_2
-        3 -> R.drawable.dice_3
-        4 -> R.drawable.dice_4
-        5 -> R.drawable.dice_5
-        else -> R.drawable.dice_6
+@Composable
+fun LemonJuice( modifier: Modifier = Modifier){
+    var lemonPhase by remember { mutableStateOf(0) }
+    val imageResource = when (lemonPhase){
+        0 -> R.drawable.lemon_tree
+        1 -> R.drawable.lemon_squeeze
+        2 -> R.drawable.lemon_drink
+        3 -> R.drawable.lemon_restart
+        else ->R.drawable.lemon_tree
+    }
+    if(lemonPhase>3){
+        lemonPhase = 0
     }
     Column (
         modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ){
-        Image(
-            painter = painterResource(imageResource),
-            contentDescription = "1"
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { result = (1..6).random() }) {
-            Text(stringResource(R.string.roll))
+        horizontalAlignment = Alignment.CenterHorizontally,
 
-        }
+    ) {
+        Image(painter = painterResource(imageResource),
+            contentDescription = "lemon Tree",
+            modifier = Modifier
+                .clickable {
+                    lemonPhase++
+                }
+            )
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(text = "Tap a Lemon Tree to select a lemon")
     }
 }
+
 @Preview
 @Composable
-fun DiceRollerApp(){
-    DiceWithBUttonAndImage(modifier = Modifier
+fun LemonJuiceApp(){
+    LemonJuice( modifier = Modifier
         .fillMaxSize()
         .wrapContentSize(Alignment.Center)
-    )
+        .background(Color.White))
 }
-
