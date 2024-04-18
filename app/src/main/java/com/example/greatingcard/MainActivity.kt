@@ -46,6 +46,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import kotlin.random.Random
 
 
 class MainActivity : ComponentActivity() {
@@ -62,12 +63,22 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun LemonJuice( modifier: Modifier = Modifier){
     var lemonPhase by remember { mutableStateOf(0) }
+    var squeeze by remember {
+        mutableStateOf(0)
+    }
     val imageResource = when (lemonPhase){
         0 -> R.drawable.lemon_tree
         1 -> R.drawable.lemon_squeeze
         2 -> R.drawable.lemon_drink
         3 -> R.drawable.lemon_restart
         else ->R.drawable.lemon_tree
+    }
+    val lemonString = when (lemonPhase){
+        0 -> R.string.lemon_tree
+        1 -> R.string.lemon
+        2 -> R.string.glass_of_lemon
+        3 -> R.string.empty_glass
+        else -> R.string.lemon_tree
     }
     if(lemonPhase>3){
         lemonPhase = 0
@@ -81,11 +92,16 @@ fun LemonJuice( modifier: Modifier = Modifier){
             contentDescription = "lemon Tree",
             modifier = Modifier
                 .clickable {
-                    lemonPhase++
+                    if(lemonPhase ==1 && squeeze<= Random.nextInt(1,10)){
+                        squeeze++
+                    }else{
+                        lemonPhase++
+                        squeeze = 0
+                    }
                 }
             )
         Spacer(modifier = Modifier.height(16.dp))
-        Text(text = "Tap a Lemon Tree to select a lemon")
+        Text(text = stringResource(lemonString))
     }
 }
 

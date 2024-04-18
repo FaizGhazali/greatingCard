@@ -8,4 +8,8 @@
     <string name="messageT1">All tasks completed</string>
     <string name="messageT2">Nice work!</string>
     <string name="roll">Roll</string>
+    <string name="lemon_tree">Tap a Lemon Tree to select a lemon</string>
+    <string name="lemon">Keep tapping the lemon to squeeze it</string>
+    <string name="glass_of_lemon">Tap the lemonade to drink it</string>
+    <string name="empty_glass">Tap the empty glass to start again</string>
 </resources>
